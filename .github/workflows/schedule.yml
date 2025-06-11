@@ -1,0 +1,30 @@
+name: Sync template repo
+
+on:
+  # cronjob trigger
+  schedule:
+    - cron: "*/5 0 * * *"
+  # manual trigger
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+    
+jobs:
+  trigger:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Generate GitHub App token
+        id: generate_token
+        uses: actions/create-github-app-token@v1
+        with:
+          app_id: ${{ secrets.APP_ID }}
+          private_key: ${{ secrets.APP_PRIVATE_KEY }}
+
+      - name: Trigger another workflow
+        uses: benc-uk/workflow-dispatch@v1
+        with:
+          workflow: sample.yml
+          token: ${{ steps.generate_token.outputs.token }}          
+          ref: develop
