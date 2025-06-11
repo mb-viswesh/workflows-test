@@ -13,7 +13,7 @@ permissions:
     
 jobs:
   trigger:          
-        uses: mb-viswesh/workflows-test/.github/workflows/schedule.yml@latest
+        uses: mb-viswesh/workflows-test/.github/workflows/schedule.yml@develop
         with:
           workflow: sample.yml
           token: ${{ steps.generate_token.outputs.token }}          
