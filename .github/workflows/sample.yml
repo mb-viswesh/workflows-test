@@ -6,6 +6,7 @@ on:
       - main
       - develop
   workflow_dispatch:
+  workflow_call:
 
 jobs:
   display-branch:
