@@ -19,5 +19,5 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
         run: |
-          gh workflow run sample.yml -R $GITHUB_REPOSITORY -ref develop
+          gh workflow run sample.yml -R $GITHUB_REPOSITORY --ref develop
 
