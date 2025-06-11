@@ -12,12 +12,10 @@ permissions:
   pull-requests: write
     
 jobs:
-  trigger:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Trigger sample workflow
+  trigger:          
         uses: mb-viswesh/workflows-test/.github/workflows/schedule.yml@latest
         with:
           workflow: sample.yml
           token: ${{ steps.generate_token.outputs.token }}          
           ref: develop
+
