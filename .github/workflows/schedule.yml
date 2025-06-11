@@ -12,10 +12,12 @@ permissions:
   pull-requests: write
     
 jobs:
-  trigger:          
-        uses: mb-viswesh/workflows-test/.github/workflows/schedule.yml@develop
-        with:
-          workflow: sample.yml
-          token: ${{ steps.generate_token.outputs.token }}          
-          ref: develop
+  trigger_dispatch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger the workflow_dispatch event
+        env:
+          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
+        run: |
+          gh workflow run sample.yml -R $GITHUB_REPOSITORY -ref develop
 
