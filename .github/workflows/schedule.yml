@@ -15,15 +15,8 @@ jobs:
   trigger:
     runs-on: ubuntu-latest
     steps:
-      - name: Generate GitHub App token
-        id: generate_token
-        uses: actions/create-github-app-token@v1
-        with:
-          app_id: ${{ secrets.APP_ID }}
-          private_key: ${{ secrets.APP_PRIVATE_KEY }}
-
-      - name: Trigger another workflow
-        uses: benc-uk/workflow-dispatch@v1
+      - name: Trigger sample workflow
+        uses: mb-viswesh/workflows-test/.github/workflows/schedule.yml@latest
         with:
           workflow: sample.yml
           token: ${{ steps.generate_token.outputs.token }}          
