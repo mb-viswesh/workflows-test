@@ -1,12 +1,7 @@
 name: sample-test-workflow
 
 on:
-  push:
-    branches:
-      - main
-      - develop
   workflow_dispatch:
-  workflow_call:
 
 jobs:
   display-branch:
